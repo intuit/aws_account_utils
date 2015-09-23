@@ -1,3 +1,4 @@
+require 'aws_account_utils/base'
 module AwsAccountUtils
   class AccountRegistration < Base
     attr_reader :logger, :browser, :options
@@ -25,7 +26,7 @@ module AwsAccountUtils
       screenshot(browser, "2")
       browser.button(:id => 'continue-input').when_present.click
       raise StandardError if browser.div(:id => /message_(error|warning)/).exist?
-
+      true
     rescue StandardError
       screenshot(browser, "error")
       error_header = browser.div(:id => /message_(error|warning)/).h6.text
