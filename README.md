@@ -95,16 +95,15 @@ resp #=> String
 ```
 
 **Paramaters:**
+```
 account_name: (required, String) - The account name to associate with this new account
-
 account_email: (required, String) - The email to associate with this new account
-
 account_password: (required, String) - The password to use with this new account
-
 account_details: (required, Hash) - Hash of account deatails
+```
 
 **Returns:**
-1234-1223-1242 #Accont Number => String
+`1234-1223-1242 #Accont Number => String`
 ---
 ## Development
 
