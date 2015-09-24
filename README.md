@@ -1,58 +1,6 @@
-
-```ruby
-f = {}
-f[:log_level]  = 'info'
-f[:screenshots]  = File.expand_path("/var/temp/screenshots", File.dirname(__FILE__))
-
-f[:account_name]  = 'The Munsters 01'
-f[:account_email]  = 'adfasfasfsaf1@gmail.com'
-f[:account_password]  = 'rJ87W7a[q72YBdX'
-
-
-f[:customer_details] = { 'fullName'     => 'Hermen Munster',
-                         'company'      => 'The Munsters',
-                         'addressLine1' => '1313 Mockingbird Lane',
-                         'city'         => 'Mockingbird Heights',
-                         'state'        => 'CA',
-                         'postalCode'   => '92000',
-                         'phoneNumber'  => '(800) 555-1212',
-                         'guess'        => 'Test Account' }
-
-a = AwsAccountUtils::AwsAccountUtils.new(f)
-resp = a.create_account
-resp
-```
-
-
- * Setting alternate contacts
- 
- ** Request:
- 
- set_alternate_contacts(hash_of_contacts)
- 
- ** Response: (true/false)
- 
- ** Example
- 
- ```ruby
- resp = set_alternate_contacts({ 'operations'  => { 'name'        => 'Operations Name',
-                                             'title'       => 'Operations Title',
-                                             'email'       => 'operations@test.com',
-                                             'phoneNumber' => '888-888-1212'},
-                          'security'    => { 'name'        => 'Security Name',
-                                             'title'       => 'Security Title',
-                                             'email'       => 'Security@test.com',
-                                             'phoneNumber' => '888-888-1212'}})
-
-```
-
-
-
 # AwsAccountUtils
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/aws_account_utils`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A collection of helpers for creating and modifying AWS account details that can not be done using any existing AWS API
 
 ## Installation
 
