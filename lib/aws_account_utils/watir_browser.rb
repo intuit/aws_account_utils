@@ -1,3 +1,4 @@
+require 'aws_account_utils/base'
 require 'watir-webdriver'
 
 module AwsAccountUtils

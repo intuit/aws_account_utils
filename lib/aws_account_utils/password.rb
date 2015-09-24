@@ -1,3 +1,5 @@
+require 'aws_account_utils/base'
+
 module AwsAccountUtils
   class Password < Base
     attr_reader :logger, :browser, :options

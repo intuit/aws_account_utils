@@ -1,3 +1,4 @@
+require 'aws_account_utils/base'
 require 'random-word'
 
 module AwsAccountUtils

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe AwsAccountUtils::AccountRegistration do
+describe AwsAccountUtils::CustomerInformation do
   let(:logger) { Logger.new(STDOUT) }
-  let(:subject) { AwsAccountUtils::AccountRegistration.new logger, browser, options }
+  let(:subject) { AwsAccountUtils::CustomerInformation.new logger, browser, options }
   let(:browser) { double 'browser' }
   let(:button) { double 'button' }
   let(:text_field) { double 'text_field' }

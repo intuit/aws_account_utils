@@ -1,21 +1,21 @@
 require 'aws_account_utils/base'
+
 module AwsAccountUtils
   class AccountRegistration < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def signup
+    def signup(account_name, account_email, account_password)
       logger.debug "Signing up for a new account."
-      login_details = { 'ap_customer_name'  => options[:account_name],
-                        'ap_email'          => options[:account_email],
-                        'ap_email_check'    => options[:account_email],
-                        'ap_password'       => options[:account_password],
-                        'ap_password_check' => options[:account_password] }
+      login_details = { 'ap_customer_name'  => account_name,
+                        'ap_email'          => account_email,
+                        'ap_email_check'    => account_email,
+                        'ap_password'       => account_password,
+                        'ap_password_check' => account_password }
 
       browser.goto signup_url
       browser.text_field(:id => 'ap_customer_name').wait_until_present

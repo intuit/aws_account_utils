@@ -27,6 +27,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rake', '~> 10.3.2'
   spec.add_runtime_dependency 'watir-webdriver', '~> 0.8.0'
   spec.add_runtime_dependency 'random-word', '~> 1.3.0'
-
-
 end

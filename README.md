@@ -74,6 +74,35 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+`#create_account(account_name:, account_email, account_password:, account_details:)`
+
+**Examples:**
+```Ruby
+details = { 'fullName'     => 'Hermen Munster',
+            'company'      => 'The Munsters',
+            'addressLine1' => '1313 Mockingbird Lane',
+            'city'         => 'Mockingbird Heights',
+            'state'        => 'CA',
+            'postalCode'   => '92000',
+            'phoneNumber'  => '(800) 555-1212',
+            'guess'        => 'Test Account' }
+
+resp = aws_utils.create_account(account_name: 'My Test Account 01',
+                                account_email: 'adfefef@gmail.com',
+                                account_password: 'foobar1212121',
+                                account_details: details)
+resp #=> String
+```
+
+**Paramaters:**
+account_name: (required, String) - The account name to associate with this new account
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+account_details: (required, Hash) - Hash of account deatails
+
+**Returns:**
+1234-1223-1242 #Accont Number => String
+---
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.

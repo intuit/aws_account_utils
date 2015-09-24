@@ -1,3 +1,5 @@
+require 'aws_account_utils/base'
+
 module AwsAccountUtils
   class CustomerInformation < Base
     attr_reader :logger, :browser, :options
