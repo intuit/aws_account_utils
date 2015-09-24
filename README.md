@@ -103,8 +103,8 @@ account_details: (required, Hash) - Hash of account deatails
 ```
 
 **Returns:**
-
 `1234-1223-1242 #Accont Number => String`
+
 ---
 ## Development
 
