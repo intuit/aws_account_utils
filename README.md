@@ -72,7 +72,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+** create_account **
+
+> Creates a new AWS Account and with the miminal amount of information and 
+> returns the account number of the new account.
+
 
 `#create_account(account_name:, account_email, account_password:, account_details:)`
 
