@@ -2,19 +2,18 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class IamBilling < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def enable
+    def enable(account_email, account_password)
       logger.debug "Enabling IAM User Access to Billing Information"
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.a(:xpath => '//a[@ng-click="toggleEditingIAMPreferencesInfoState()"]').when_present(timeout = 120).click
       browser.label(:xpath => '//label[@ng-show="isEditingIAMPreferencesInfo"]').when_present.click
       screenshot(browser, "1")

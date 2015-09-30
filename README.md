@@ -59,6 +59,267 @@ account_details: (required, Hash) - Hash of account deatails
 `1234-1223-1242 #Accont Number => String`
 
 ---
+
+`change_root_password(account_email:, account_password:, new_password:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`check_enterprise_support(account_email:, account_password:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`confirm_consolidated_billing(account_email:, account_password:, confirmation_link:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`create_root_access_keys(account_email:, account_password:)`
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`delete_root_access_keys(account_email:, account_password:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`email_opt_out(account_email:, account_password:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`enable_enterprise_support(account_email:, account_password:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`enable_iam_billing(account_email:, account_password:)`
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`existing_consolidated_billing?(account_email:, account_password:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`logout_from_console`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`request_consolidated_billing(master_account_email:, master_account_password:, account_email:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`set_alternate_contacts(account_email:, account_password:, contact_info:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+`set_challenge_questions(account_email:, account_password:, answers:)`
+
+**Examples:**
+```Ruby
+
+resp #=> String
+```
+
+**Paramaters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---    
+
+
+---
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.

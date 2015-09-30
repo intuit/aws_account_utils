@@ -2,19 +2,18 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class AlternateContacts < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def set(contact_info = {})
+    def set(account_email, account_password, contact_info = {})
       logger.debug "Setting alternate account contacts."
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.a(:xpath => '//a[@ng-click="toggleEditingAlternateContactsInfoState()"]').when_present.click
       form_inputs(contact_info)
       screenshot(browser, "1")

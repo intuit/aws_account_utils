@@ -2,24 +2,23 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class Password < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def change(new_password)
+    def change(account_email, account_password, new_password)
       logger.debug 'Changing root password.'
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.h1(:text => /Change Name, E-mail Address, or Password/).wait_until_present
       screenshot(browser, "1")
       browser.button(:id => 'cnep_1A_change_password_button-input').when_present.click
       screenshot(browser, "2")
-      browser.text_field(:id =>"ap_password").when_present.set options[:account_password]
+      browser.text_field(:id =>"ap_password").when_present.set account_password
       browser.text_field(:id =>"ap_password_new").when_present.set new_password
       browser.text_field(:id =>"ap_password_new_check").when_present.set new_password
       screenshot(browser, "3")

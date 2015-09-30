@@ -2,18 +2,17 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class EmailPreferences < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def opt_out
+    def opt_out(account_email, account_password)
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.input(:id => 'email_preferences_optout_all_true').when_present.click
       screenshot(browser, "1")
       browser.input(:value => 'Save Changes').when_present.click

@@ -2,21 +2,20 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class ConsolidatedBilling < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def request(master_account_email, master_account_password)
-      logger.debug "Submitting consolidated billing request from master account #{master_account_email}"
+    def request(master_account_email, master_account_password, account_email)
+      logger.debug "Submitting consolidated billing request from master account #{master_account_email} to #{account_email}"
       Login.new(logger, browser).execute billing_request_url,
                                          master_account_email,
                                          master_account_password
 
-      browser.text_field(:name => "emailaddresses").when_present.set options[:account_email]
+      browser.text_field(:name => "emailaddresses").when_present.set account_email
       screenshot(browser, "1")
       browser.button(:class => "btn btn-primary margin-left-10").when_present.click
       browser.h2(:text => /Manage Requests and Accounts/).wait_until_present
@@ -25,12 +24,12 @@ module AwsAccountUtils
       raise StandardError, "#{self.class.name} - #{e}"
     end
 
-    def confirm(confirmation_link)
+    def confirm(account_email, account_password, confirmation_link)
       logger.debug "Confirming consolidated billing"
 
       Login.new(logger, browser).execute confirmation_link,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
 
       browser.button(:class => "btn btn-primary").when_present.click
       screenshot(browser, "1")
@@ -43,12 +42,12 @@ module AwsAccountUtils
       raise StandardError, "#{self.class.name} - #{e}"
     end
 
-    def existing?
+    def existing?(account_email, account_password)
       logger.debug "Checking to see if Consolidated Billing is already setup"
 
       Login.new(logger, browser).execute billing_established_url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.h2(:text => /Consolidated Billing/).wait_until_present
       screenshot(browser, "1")
       billing_setup?

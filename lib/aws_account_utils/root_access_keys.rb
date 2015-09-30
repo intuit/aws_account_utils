@@ -2,19 +2,18 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class RootAccessKeys < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def create
+    def create(account_email, account_password)
       logger.debug "Creating root access/secret key"
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       clear_warning if browser.div(:id => 'modal-content', :text => warning_text)
       browser.i(:xpath => "id('credaccordion')/div[3]/div[1]/div/div[1]/i").when_present.click
       browser.button(:text => /Create New Access Key/).when_present.click
@@ -26,11 +25,11 @@ module AwsAccountUtils
       raise StandardError, "#{self.class.name} - #{e}"
     end
 
-    def delete
+    def delete(account_email, account_password)
       logger.debug "Deleting root access/secret key"
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       clear_warning if browser.div(:id => 'modal-content', :text => warning_text)
       browser.i(:xpath => "id('credaccordion')/div[3]/div[1]/div/div[1]/i").when_present.click
       keys_to_delete? ? delete_all_keys : true

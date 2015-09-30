@@ -3,19 +3,18 @@ require 'random-word'
 
 module AwsAccountUtils
   class ChallengeQuestions < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def create(challenge_words = {})
+    def create(account_email, account_password, challenge_words = {})
       logger.debug "Entering customer details."
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
 
       browser.a(:xpath => '//a[@ng-click="toggleEditingSecurityQuestionsInfoState()"]').when_present.click
 

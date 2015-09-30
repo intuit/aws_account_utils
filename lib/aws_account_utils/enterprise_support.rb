@@ -2,19 +2,18 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class EnterpriseSupport < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def enable
+    def enable(account_email,account_password)
       logger.debug 'Enabling enterprise support.'
       Login.new(logger, browser).execute support_registration_url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.input(:value => "AWSSupportEnterprise").when_present(timeout = 60).click
       browser.span(:text => /Continue/).when_present(timeout = 60).click
       screenshot(browser, "1")
@@ -27,11 +26,11 @@ module AwsAccountUtils
       raise StandardError, "#{self.class.name} - #{e}"
     end
 
-    def existing_support?
+    def existing_support?(account_email,account_password)
       logger.debug 'Checking to see if enterprise support is enabled.'
       Login.new(logger, browser).execute support_status_url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
 
       screenshot(browser, "1")
       browser.text.include? 'Enterprise Support Plan'

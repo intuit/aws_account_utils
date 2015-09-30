@@ -2,19 +2,18 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class CustomerInformation < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def submit(customer_details)
+    def submit(account_email, account_password, customer_details)
       logger.debug "Entering customer details."
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.link(:text => /AWS Customer Agreement/).wait_until_present
       browser.select_list(:class =>'control-select ng-pristine ng-valid').when_present.select 'United States'
       customer_details.each do |k,v|

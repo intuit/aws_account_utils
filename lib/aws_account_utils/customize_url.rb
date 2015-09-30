@@ -2,19 +2,18 @@ require 'aws_account_utils/base'
 
 module AwsAccountUtils
   class CustomizeUrl < Base
-    attr_reader :logger, :browser, :options
+    attr_reader :logger, :browser
 
-    def initialize(logger, browser, options)
+    def initialize(logger, browser)
       @logger = logger
       @browser = browser
-      @options = options
     end
 
-    def execute(url_alias)
+    def execute(account_email, account_password, url_alias)
       logger.debug "Creating URL alias: #{url_alias}"
       Login.new(logger, browser).execute url,
-                                         options[:account_email],
-                                         options[:account_password]
+                                         account_email,
+                                         account_password
       browser.goto url
       browser.h2(:text => /Welcome to Identity and Access Management/).wait_until_present
       browser.button(:text => /Customize/).when_present.click
