@@ -25,7 +25,6 @@ Or install it yourself as:
 > Creates a new AWS Account and with the miminal amount of information and 
 > returns the account number of the new account.
 
-
 `#create_account(account_name:, account_email, account_password:, account_details:)`
 
 **Examples:**
@@ -58,7 +57,9 @@ account_details: (required, Hash) - Hash of account deatails
 
 `1234-1223-1242 #Accont Number => String`
 
----
+**change_root_password**
+
+> Changes the account password
 
 `change_root_password(account_email:, account_password:, new_password:)`
 
@@ -71,14 +72,17 @@ resp #=> String
 **Paramaters:**
 ```
 account_email: (required, String) - The email to associate with this new account
-account_password: (required, String) - The password to use with this new account
+account_password: (required, String) - The old password to use with this new account
+new_password: (required, String) - The new password to use with this new account
 ```
 
 **Returns:**
 
 `#return => Boolean`
 
----
+**change_root_password**
+
+> Changes the account password
 
 `check_enterprise_support(account_email:, account_password:)`
 
@@ -98,7 +102,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**change_root_password**
+
+> Changes the account password
 
 `confirm_consolidated_billing(account_email:, account_password:, confirmation_link:)`
 
@@ -118,7 +124,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**create_root_access_keys**
+
+> Creates access and secret key for root account
 
 `create_root_access_keys(account_email:, account_password:)`
 **Examples:**
@@ -137,7 +145,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**delete_root_access_keys**
+
+> Deletes ALL root access/secret keys from the root of the account
 
 `delete_root_access_keys(account_email:, account_password:)`
 
@@ -157,7 +167,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**email_opt_out**
+
+> Opts account out of all email marketing
 
 `email_opt_out(account_email:, account_password:)`
 
@@ -177,7 +189,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**enable_enterprise_support**
+
+> Enables enterprise support
 
 `enable_enterprise_support(account_email:, account_password:)`
 
@@ -197,7 +211,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**enable_iam_billing**
+
+> Sets the account to enable IAM billing
 
 `enable_iam_billing(account_email:, account_password:)`
 **Examples:**
@@ -216,7 +232,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**existing_consolidated_billing**
+
+> Checks to see if consolidated billing has been setup
 
 `existing_consolidated_billing?(account_email:, account_password:)`
 
@@ -236,7 +254,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**logout_from_console**
+
+> Logs out of the console
 
 `logout_from_console`
 
@@ -256,7 +276,10 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**request_consolidated_billing**
+
+> Requests consolidated billing to be setup with your master account. An email is sent to the 
+> account being added with a link. That link should be passed into `confirm_consolidated_billing`
 
 `request_consolidated_billing(master_account_email:, master_account_password:, account_email:)`
 
@@ -276,7 +299,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**set_alternate_contacts**
+
+> Sets alternate contacts for the account
 
 `set_alternate_contacts(account_email:, account_password:, contact_info:)`
 
@@ -296,7 +321,9 @@ account_password: (required, String) - The password to use with this new account
 
 `#return => Boolean`
 
----
+**set_challenge_questions**
+
+> Sets the accounts challenge security questions
 
 `set_challenge_questions(account_email:, account_password:, answers:)`
 
@@ -315,9 +342,6 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
----    
-
 
 ---
 ## Development
