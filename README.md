@@ -36,7 +36,8 @@ Or install it yourself as:
   * [set_alternate_contacts](#set_alternate_contacts)
   * [set_challenge_questions](#set_challenge_questions)
 
-**create_account**
+create_account
+------------
 
 > Creates a new AWS Account and with the miminal amount of information and 
 > returns the account number of the new account.
