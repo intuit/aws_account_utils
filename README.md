@@ -79,7 +79,7 @@ new_password: (required, String) - The new password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **change_root_password**
 
 > Changes the account password
@@ -101,7 +101,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **change_root_password**
 
 > Changes the account password
@@ -123,7 +123,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **create_root_access_keys**
 
 > Creates access and secret key for root account
@@ -144,7 +144,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **delete_root_access_keys**
 
 > Deletes ALL root access/secret keys from the root of the account
@@ -166,7 +166,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **email_opt_out**
 
 > Opts account out of all email marketing
@@ -188,7 +188,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **enable_enterprise_support**
 
 > Enables enterprise support
@@ -210,7 +210,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **enable_iam_billing**
 
 > Sets the account to enable IAM billing
@@ -231,7 +231,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **existing_consolidated_billing**
 
 > Checks to see if consolidated billing has been setup
@@ -253,7 +253,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **logout_from_console**
 
 > Logs out of the console
@@ -275,7 +275,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **request_consolidated_billing**
 
 > Requests consolidated billing to be setup with your master account. An email is sent to the 
@@ -298,7 +298,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **set_alternate_contacts**
 
 > Sets alternate contacts for the account
@@ -320,7 +320,7 @@ account_password: (required, String) - The password to use with this new account
 **Returns:**
 
 `#return => Boolean`
-
+---
 **set_challenge_questions**
 
 > Sets the accounts challenge security questions
@@ -344,6 +344,7 @@ account_password: (required, String) - The password to use with this new account
 `#return => Boolean`
 
 ---
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
