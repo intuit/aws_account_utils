@@ -20,6 +20,22 @@ Or install it yourself as:
 
 ## Usage
 
+ Operations
+=================
+  * [create_account](#create_account)
+  * [change_root_password](#change_root_password)
+  * [check_enterprise_support](#check_enterprise_support)
+  * [confirm_consolidated_billing](#confirm_consolidated_billing)
+  * [create_root_access_keys](#create_root_access_keys)
+  * [delete_root_access_keys](#delete_root_access_keys)
+  * [email_opt_out](#email_opt_out)
+  * [enable_enterprise_support](#enable_enterprise_support)
+  * [enable_iam_billing](#enable_iam_billing)
+  * [logout_from_console](#logout_from_console)
+  * [request_consolidated_billing](#request_consolidated_billing)
+  * [set_alternate_contacts](#set_alternate_contacts)
+  * [set_challenge_questions](#set_challenge_questions)
+
 **create_account**
 
 > Creates a new AWS Account and with the miminal amount of information and 
