@@ -74,7 +74,9 @@ account_details: (required, Hash) - Hash of account deatails
 
 `1234-1223-1242 #Accont Number => String`
 
-**change_root_password**
+change_root_password
+------------
+
 
 > Changes the account password
 
@@ -99,9 +101,10 @@ new_password: (required, String) - The new password to use with this new account
 
 ---
 
-**change_root_password**
+check_enterprise_support
+------------
 
-> Changes the account password
+> Checks if enterprise support is enabled
 
 `check_enterprise_support(account_email:, account_password:)`
 
@@ -123,9 +126,10 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**change_root_password**
+confirm_consolidated_billing
+------------
 
-> Changes the account password
+> Confirms consolidated billing
 
 `confirm_consolidated_billing(account_email:, account_password:, confirmation_link:)`
 
@@ -147,7 +151,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**create_root_access_keys**
+create_root_access_keys
+------------
 
 > Creates access and secret key for root account
 
@@ -170,7 +175,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**delete_root_access_keys**
+delete_root_access_keys
+------------
 
 > Deletes ALL root access/secret keys from the root of the account
 
@@ -194,7 +200,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**email_opt_out**
+email_opt_out
+------------
 
 > Opts account out of all email marketing
 
@@ -218,7 +225,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**enable_enterprise_support**
+enable_enterprise_support
+------------
 
 > Enables enterprise support
 
@@ -242,7 +250,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**enable_iam_billing**
+enable_iam_billing
+------------
 
 > Sets the account to enable IAM billing
 
@@ -265,7 +274,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**existing_consolidated_billing**
+existing_consolidated_billing
+------------
 
 > Checks to see if consolidated billing has been setup
 
@@ -289,7 +299,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**logout_from_console**
+logout_from_console
+------------
 
 > Logs out of the console
 
@@ -313,7 +324,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**request_consolidated_billing**
+request_consolidated_billing
+------------
 
 > Requests consolidated billing to be setup with your master account. An email is sent to the 
 > account being added with a link. That link should be passed into `confirm_consolidated_billing`
@@ -338,7 +350,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**set_alternate_contacts**
+set_alternate_contacts
+------------
 
 > Sets alternate contacts for the account
 
@@ -362,7 +375,8 @@ account_password: (required, String) - The password to use with this new account
 
 ---
 
-**set_challenge_questions**
+set_challenge_questions
+------------
 
 > Sets the accounts challenge security questions
 
