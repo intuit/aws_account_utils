@@ -25,6 +25,12 @@ Or install it yourself as:
 Overview
 =================
 
+If you are required to go through a proxy, the following should be set prior to execution.
+```
+export NO_PROXY=127.0.0.1
+export HTTP_PROXY=myproxyhots.com
+```
+
 ```ruby
 aws_utils = AwsAccountUtils::AwsAccountUtils.new(
   browser: (Watir::Browser) - default: Watir Browser object - You can pass in your own Browser object or use the built-in which uses firefox.

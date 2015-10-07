@@ -6,6 +6,7 @@ describe AwsAccountUtils::CustomerInformation do
   let(:browser) { double 'browser' }
   let(:h2) { double 'browser element h2' }
   let(:input) { double 'browser input' }
+  let(:text) { double 'browser text' }
   let(:button) { double 'browser button' }
   let(:checkbox) { double 'browser checkbox' }
   let(:link) { double 'browser link' }
@@ -40,12 +41,10 @@ describe AwsAccountUtils::CustomerInformation do
     expect(browser).to receive(:url).and_return('https://www.amazon.com/ap/signin?')
     expect(logger).to receive(:debug).with('Logging into AWS.')
 
-    expect(browser).to receive(:link).with({:text=>/AWS Customer Agreement/})
-                                     .and_return link
-    expect(link).to receive(:wait_until_present)
+    expect(browser).to receive(:wait_until).and_return text
 
     expect(browser).to receive(:select_list)
-                   .with({:class=>"control-select ng-pristine ng-valid"})
+                   .with({:ng_model=>"address.countryCode"})
                    .and_return select_list
     expect(select_list).to receive(:when_present).and_return select_list
     expect(select_list).to receive(:select).with("United States")

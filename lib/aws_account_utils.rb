@@ -199,5 +199,3 @@ module AwsAccountUtils
     end
   end
 end
-
-a = AwsAccountUtils::AwsAccountUtils.new(logger: 'mylogger')

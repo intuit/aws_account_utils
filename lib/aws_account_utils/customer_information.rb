@@ -15,8 +15,9 @@ module AwsAccountUtils
       Login.new(logger, browser).execute url,
                                          account_email,
                                          account_password
-      browser.link(:text => /AWS Customer Agreement/).wait_until_present
-      browser.select_list(:class =>'control-select ng-pristine ng-valid').when_present.select 'United States'
+
+      browser.wait_until{ browser.text.include? 'AWS Customer Agreement'}
+      browser.select_list(:ng_model =>'address.countryCode').when_present.select 'United States'
       customer_details.each do |k,v|
         browser.text_field(:name => k).when_present.set v
       end
