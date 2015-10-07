@@ -23,6 +23,7 @@ module AwsAccountUtils
       raise StandardError, "#{self.class.name} - #{e}"
     end
 
+    private
     def login_page?
       browser.url.include? 'ap/signin?'
     end

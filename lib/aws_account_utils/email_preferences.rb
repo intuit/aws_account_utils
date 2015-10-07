@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 
 module AwsAccountUtils
   class EmailPreferences < Base
@@ -10,6 +11,8 @@ module AwsAccountUtils
     end
 
     def opt_out(account_email, account_password)
+      logger.debug "Setting email preferences."
+
       Login.new(logger, browser).execute url,
                                          account_email,
                                          account_password

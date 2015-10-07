@@ -13,7 +13,6 @@ module AwsAccountUtils
       logger.debug "Logging out of AWS."
       browser.goto url
       screenshot(browser, "1")
-      #Watir::Wait.until{browser.url == 'https://aws.amazon.com/'}
       browser.wait_until{ browser.url.include? 'https://aws.amazon.com/'}
       browser.text.include?('Sign In to the Console') || browser.text.include?('Create a Free Account')
     rescue Watir::Wait::TimeoutError, Net::ReadTimeout => e

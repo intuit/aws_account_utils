@@ -16,11 +16,12 @@ require 'aws_account_utils/logout'
 
 module AwsAccountUtils
   class AwsAccountUtils
-    attr_reader :options, :logger, :browser, :screenshots
+    attr_reader :log_level, :logger, :browser, :screenshots
 
-    def initialize(logger: nil, browser: nil, screenshots: nil)
-      @browser = browser
+    def initialize(log_level: 'info', logger: nil, browser: nil, screenshots: nil)
+      @log_level = log_level
       @logger = logger
+      @browser = browser
       @screenshots = screenshots
 
       Settings.set_screenshot_dir screenshots if screenshots
@@ -182,7 +183,7 @@ module AwsAccountUtils
     end
 
     def logger
-      @logger ||= AccountLogger.new(options[:log_level])
+      @logger ||= AccountLogger.new(log_level)
     end
 
     def password

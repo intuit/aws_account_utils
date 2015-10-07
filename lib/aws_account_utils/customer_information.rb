@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 
 module AwsAccountUtils
   class CustomerInformation < Base
@@ -30,10 +31,15 @@ module AwsAccountUtils
       browser.input(:id => "accountId").value
     rescue StandardError
       screenshot(browser, 'error')
-      raise StandardError, 'Steps: AwsCustomerInformation Aws returned error on page.'
+      raise StandardError, 'Aws returned error on the page when submitting customer information.'
     rescue Watir::Wait::TimeoutError, Net::ReadTimeout => e
       screenshot(browser, "error")
       raise StandardError, "#{self.class.name} - #{e}"
+    end
+
+    private
+    def url
+      'https://portal.aws.amazon.com/billing/signup#/account'
     end
   end
 end

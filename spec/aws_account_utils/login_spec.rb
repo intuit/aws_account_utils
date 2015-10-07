@@ -2,27 +2,45 @@ require 'spec_helper'
 
 describe AwsAccountUtils::AccountRegistration do
   let(:logger) { Logger.new(STDOUT) }
-  let(:subject) { AwsAccountUtils::AccountRegistration.new logger, browser, options }
+  let(:subject) { AwsAccountUtils::Login.new logger, browser }
+  let(:login) { AwsAccountUtils::Login.new logger, browser }
   let(:browser) { double 'browser' }
-  let(:button) { double 'button' }
-  let(:text_field) { double 'text_field' }
+  let(:strong) { double 'browser strong' }
+  let(:a) { double 'browser element a' }
+  let(:input) { double 'browser input' }
+  let(:label) { double 'browser label' }
+  let(:button) { double 'browser button' }
+  let(:text_field) { double 'browser text field' }
+  let(:url) { 'https://portal.aws.amazon.com/gp/aws/manageYourAccount' }
 
+  it "should log into aws if presented with login page" do
+    expect(browser).to receive(:text_field).with({:id => "ap_email"})
+                                           .and_return text_field
+    expect(text_field).to receive(:when_present).and_return text_field
+    expect(text_field).to receive(:set)
 
-  let(:url) { url }
-  let(:options) { {:log_level => 'debug',
-                   :screenshots  => File.expand_path("/var/temp/screenshots", File.dirname(__FILE__)),
-                   :account_name => 'Dune',
-                   :account_email  => 'paul_atredies@gmail.com',
-                   :account_password  => 'melange',
-                   :customer_details => { 'fullName'     => 'The Planet Arrakis',
-                                          'company'      => 'House Atreides',
-                                          'addressLine1' => '1 Dune Way',
-                                          'city'         => 'Imperium',
-                                          'state'        => 'CA',
-                                          'postalCode'   => '92000',
-                                          'phoneNumber'  => '(800) 555-1212',
-                                          'guess'        => 'Spice' }} }
-  it "should" do
+    expect(browser).to receive(:text_field).with({:id => "ap_password"})
+                                           .and_return text_field
+    expect(text_field).to receive(:when_present).and_return text_field
+    expect(text_field).to receive(:set)
 
+    expect(browser).to receive(:button).with({:id => "signInSubmit-input"})
+                                       .and_return button
+    expect(button).to receive(:when_present).and_return button
+    expect(button).to receive(:click)
+
+    expect(browser).to receive(:goto).with(url)
+    expect(browser).to receive(:url)
+                   .and_return('https://www.amazon.com/ap/signin?')
+    expect(logger).to receive(:debug).with('Logging into AWS.')
+
+    expect(subject.execute(url, 'my_user', 'my_password')).to be_nil
+  end
+
+  it "should not attempt to log into aws if login page is not displayed" do
+    expect(browser).to receive(:goto).with(url)
+    expect(browser).to receive(:url).and_return(url)
+
+    expect(subject.execute(url, 'my_user', 'my_password')).to be true
   end
 end

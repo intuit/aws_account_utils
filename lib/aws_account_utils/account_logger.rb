@@ -6,7 +6,7 @@ module AwsAccountUtils
     extend Forwardable
     def_delegators :@logger, :fatal, :debug, :error, :info, :warn, :debug?
 
-    def initialize(log_level = 'info')
+    def initialize(log_level)
       @log_level = log_level
       @logger = new_logger
     end
