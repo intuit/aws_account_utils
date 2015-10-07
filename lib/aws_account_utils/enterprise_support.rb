@@ -10,7 +10,7 @@ module AwsAccountUtils
       @browser = browser
     end
 
-    def enable(account_email,account_password)
+    def enable(account_email, account_password)
       logger.debug 'Enabling enterprise support.'
       Login.new(logger, browser).execute support_registration_url,
                                          account_email,
