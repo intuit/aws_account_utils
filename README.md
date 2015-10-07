@@ -2,6 +2,8 @@
 
 A collection of helpers for creating and modifying AWS account details that can not be done using any existing AWS API
 
+Special Note: the `create_account` operation requires that your IP be white-listed by AWS in order to bypass the CAPTCHA
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -39,8 +41,9 @@ Or install it yourself as:
 create_account
 ------------
 
-> Creates a new AWS Account and with the miminal amount of information and 
+> Creates a new AWS Account and with the minimal amount of information and 
 > returns the account number of the new account.
+> Requires that your IP be white-listed by AWS in order to bypass the CAPTCHA
 
 `#create_account(account_name:, account_email, account_password:, account_details:)`
 
