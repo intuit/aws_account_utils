@@ -10,7 +10,7 @@ describe AwsAccountUtils::ConsolidatedBilling do
   let(:text_field) { double 'browser text field' }
   let(:url) { 'https://console.aws.amazon.com/billing/home?#/consolidatedbilling/sendrequest' }
 
-  it "should set the answers to the security questions" do
+  it "should confirm consolidated billing" do
     expect(logger).to receive(:debug)
                   .with('Submitting consolidated billing request from master account master_acct_user to acct_email@test.com')
     expect(browser).to receive(:text_field).with({:id=>"ap_email"}).and_return text_field

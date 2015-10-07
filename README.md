@@ -22,6 +22,18 @@ Or install it yourself as:
 
 ## Usage
 
+Overview
+=================
+
+```ruby
+aws_utils = AwsAccountUtils::AwsAccountUtils.new(
+  browser: (Watir::Browser) - default: Watir Browser object - You can pass in your own Browser object or use the built-in which uses firefox.
+  logger: (Logger) - default: Logger object. - You can pass in your own logger or use the built in.
+  log_level: (Symbol) - default: :info - Sets the logger level. Only :info and :debug are useful
+  screenshots: (String) - default: nil - Enables screenshots by passing the directory to put the screenshots which are taken throughout the different operations. 
+ )
+```
+
  Operations
 =================
   * [create_account](#create_account)
@@ -49,7 +61,7 @@ create_account
 
 **Examples:**
 ```Ruby
-details = { 'fullName'     => 'Hermen Munster',
+details = { 'fullName'     => 'Herman Munster',
             'company'      => 'The Munsters',
             'addressLine1' => '1313 Mockingbird Lane',
             'city'         => 'Mockingbird Heights',
@@ -65,7 +77,7 @@ resp = aws_utils.create_account(account_name: 'My Test Account 01',
 resp #=> String
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_name: (required, String) - The account name to associate with this new account
 account_email: (required, String) - The email to associate with this new account
@@ -80,18 +92,19 @@ account_details: (required, Hash) - Hash of account deatails
 change_root_password
 ------------
 
-
 > Changes the account password
 
 `change_root_password(account_email:, account_password:, new_password:)`
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.change_root_password(account_email: 'adfefef@gmail.com',
+                                      account_password: 'foobar1212121',
+                                      new_password: 'mynewpassword')
+resp #=> true/false
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The old password to use with this new account
@@ -113,11 +126,12 @@ check_enterprise_support
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.check_enterprise_support(account_email: 'adfefef@gmail.com',
+                                          account_password: 'foobar1212121'')
+resp #=> true/false
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -132,25 +146,29 @@ account_password: (required, String) - The password to use with this new account
 confirm_consolidated_billing
 ------------
 
-> Confirms consolidated billing
+> Confirms consolidated billing by taking the link that was emailed to you when you enabled consolidated billing.
 
 `confirm_consolidated_billing(account_email:, account_password:, confirmation_link:)`
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.confirm_consolidated_billing(account_email: 'adfefef@gmail.com',
+                                              account_password: 'foobar1212121',
+                                              confirmation_link: 'amazonaws.com/confirmationlink')
+resp #=> nil
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
+confirmation_link: (required, String) - The unique url that will confirm billing
+
 ```
 
 **Returns:**
 
-`#return => Boolean`
+`#return => nil`
 
 ---
 
@@ -160,13 +178,15 @@ create_root_access_keys
 > Creates access and secret key for root account
 
 `create_root_access_keys(account_email:, account_password:)`
+
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.create_root_access_keys(account_email: 'adfefef@gmail.com',
+                                         account_password: 'foobar1212121)
+resp #=> Hash
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -174,7 +194,7 @@ account_password: (required, String) - The password to use with this new account
 
 **Returns:**
 
-`#return => Boolean`
+`#return => Hash {:access_key=>"my_access_key", :secret_key=>"my_secret_key"}`
 
 ---
 
@@ -187,11 +207,12 @@ delete_root_access_keys
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.delete_root_access_keys(account_email: 'adfefef@gmail.com',
+                                         account_password: 'foobar1212121)
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -199,7 +220,7 @@ account_password: (required, String) - The password to use with this new account
 
 **Returns:**
 
-`#return => Boolean`
+`#return => true/false`
 
 ---
 
@@ -212,11 +233,12 @@ email_opt_out
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.email_opt_out(account_email: 'adfefef@gmail.com',
+                               account_password: 'foobar1212121)
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -231,17 +253,18 @@ account_password: (required, String) - The password to use with this new account
 enable_enterprise_support
 ------------
 
-> Enables enterprise support
+> Enables enterprise support, this should be done after consolidated billing has been setup
 
 `enable_enterprise_support(account_email:, account_password:)`
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.enable_enterprise_support(account_email: 'adfefef@gmail.com',
+                                           account_password: 'foobar1212121)
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -261,11 +284,12 @@ enable_iam_billing
 `enable_iam_billing(account_email:, account_password:)`
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.enable_iam_billing(account_email: 'adfefef@gmail.com',
+                                    account_password: 'foobar1212121)
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -286,11 +310,12 @@ existing_consolidated_billing
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.existing_consolidated_billing?(account_email: 'adfefef@gmail.com',
+                                                account_password: 'foobar1212121)
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
@@ -311,14 +336,12 @@ logout_from_console
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.logout_from_console
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
-account_email: (required, String) - The email to associate with this new account
-account_password: (required, String) - The password to use with this new account
 ```
 
 **Returns:**
@@ -337,14 +360,17 @@ request_consolidated_billing
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+resp = aws_utils.request_consolidated_billing(master_account_email: 'my_master_acccount@gmail.com',
+                                              master_account_password: 'master_acct_password,
+                                              account_email: 'my_new_account_email@gmail.com')
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
-account_email: (required, String) - The email to associate with this new account
-account_password: (required, String) - The password to use with this new account
+master_account_email: (required, String) - The email for your master billing aws account
+master_account_password: (required, String) - The password for your master billing aws account
+account_email: (required, String) - The email for the account you want to add to consolidated billing under the master account
 ```
 
 **Returns:**
@@ -363,13 +389,27 @@ set_alternate_contacts
 **Examples:**
 ```Ruby
 
-resp #=> String
+contacts = {'operations' => {'name' => 'Operations Name',
+                             'title' => 'Operations Title',
+                             'email' => 'operations@test.com',
+                             'phoneNumber' => '888-888-1212'},
+            'security' => {'name' => 'Security Name',
+                           'title' => 'Security Title',
+                           'email' => 'Security@test.com',
+                           'phoneNumber' => '888-888-1212'}}
+                                     
+resp = aws_utils.set_alternate_contacts(account_email: 'adfefef@gmail.com',
+                                        account_password: 'foobar1212121,
+                                        contact_info: contacts)
+resp #=> True/False
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
+contact_info: (required, Hash) - A Hash of Hash of contacts, operations, security, etc.
+
 ```
 
 **Returns:**
@@ -387,19 +427,28 @@ set_challenge_questions
 
 **Examples:**
 ```Ruby
-
-resp #=> String
+my_answers = {1 => 'answer1',
+              2 => 'answer2',
+              3 => 'answer3'}
+              
+resp = aws_utils.set_challenge_questions(account_email: 'adfefef@gmail.com',
+                                         account_password: 'foobar1212121,
+                                         answers: my_answers)
+                                        
+resp #=> {1 => 'answer1', 2 => 'answer2', 3 => 'answer3'}
 ```
 
-**Paramaters:**
+**Parameters:**
 ```
 account_email: (required, String) - The email to associate with this new account
 account_password: (required, String) - The password to use with this new account
+answers: (optional, Hash) - A hash of answers to fill in for the security questions. If you dont pass your own, Random word will generate for you.
+
 ```
 
 **Returns:**
 
-`#return => Boolean`
+`#return => Hash`
 
 ---
 

@@ -18,7 +18,7 @@ module AwsAccountUtils
   class AwsAccountUtils
     attr_reader :log_level, :logger, :browser, :screenshots
 
-    def initialize(log_level: 'info', logger: nil, browser: nil, screenshots: nil)
+    def initialize(log_level: :info, logger: nil, browser: nil, screenshots: nil)
       @log_level = log_level
       @logger = logger
       @browser = browser
@@ -199,3 +199,5 @@ module AwsAccountUtils
     end
   end
 end
+
+a = AwsAccountUtils::AwsAccountUtils.new(logger: 'mylogger')

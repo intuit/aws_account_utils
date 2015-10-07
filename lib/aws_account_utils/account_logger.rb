@@ -19,7 +19,7 @@ module AwsAccountUtils
         l.formatter = proc do |severity, datetime, progname, msg|
           "#{datetime} #{severity} : #{msg}\n"
         end
-        l.level = Logger.const_get @log_level.upcase
+        l.level = Logger.const_get @log_level.to_s.upcase
       end
     end
   end
