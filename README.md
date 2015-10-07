@@ -27,8 +27,8 @@ Overview
 
 If you are required to go through a proxy, the following should be set prior to execution.
 ```
-export NO_PROXY=127.0.0.1
-export HTTP_PROXY=myproxyhots.com
+export no_proxy=127.0.0.1
+export http_proxy=myproxyhots.com
 ```
 
 ```ruby
