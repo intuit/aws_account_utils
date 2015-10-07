@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 
 module AwsAccountUtils
   class CustomizeUrl < Base
@@ -14,7 +15,7 @@ module AwsAccountUtils
       Login.new(logger, browser).execute url,
                                          account_email,
                                          account_password
-      browser.goto url
+
       browser.h2(:text => /Welcome to Identity and Access Management/).wait_until_present
       browser.button(:text => /Customize/).when_present.click
       browser.input(:id => 'alias_input').when_present.to_subtype.set url_alias

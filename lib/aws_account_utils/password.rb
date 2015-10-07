@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 
 module AwsAccountUtils
   class Password < Base
@@ -27,11 +28,10 @@ module AwsAccountUtils
       browser.h6(:text => /Success/).exist?
     rescue StandardError => e
       screenshot(browser, "error")
-      logger.debug "Standard error in #{self.class.name} - #{e}"
       error_header = browser.div(:id => /message_(error|warning)/).h6.text
       error_body = browser.div(:id => /message_(error|warning)/).p.text
-      logger.debug "AWS Password Change Error: \"#{error_header}: #{error_body}\""
-      false
+      raise StandardError, "AWS Password Change Error: \"#{error_header}: #{error_body}\""
+
     rescue Watir::Wait::TimeoutError, Net::ReadTimeout => e
       screenshot(browser, "error")
       raise StandardError, "#{self.class.name} - #{e}"

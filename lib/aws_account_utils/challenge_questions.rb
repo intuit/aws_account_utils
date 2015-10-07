@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 require 'random-word'
 
 module AwsAccountUtils
@@ -11,7 +12,7 @@ module AwsAccountUtils
     end
 
     def create(account_email, account_password, challenge_words = {})
-      logger.debug "Entering customer details."
+      logger.debug "Setting security challenge answers."
       Login.new(logger, browser).execute url,
                                          account_email,
                                          account_password

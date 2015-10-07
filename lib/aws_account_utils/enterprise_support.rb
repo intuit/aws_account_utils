@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 
 module AwsAccountUtils
   class EnterpriseSupport < Base

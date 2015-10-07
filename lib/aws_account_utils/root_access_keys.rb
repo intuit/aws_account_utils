@@ -1,4 +1,5 @@
 require 'aws_account_utils/base'
+require 'aws_account_utils/login'
 
 module AwsAccountUtils
   class RootAccessKeys < Base
@@ -65,8 +66,7 @@ module AwsAccountUtils
     end
 
     def keys_to_delete?
-     a = browser.a(:class => 'Delete').exist?
-      a
+     browser.a(:class => 'Delete').exist?
     end
 
     def clear_warning
