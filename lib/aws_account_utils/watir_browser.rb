@@ -1,6 +1,7 @@
 require 'aws_account_utils/base'
 require 'watir-webdriver'
 Watir::HTMLElement.attributes << :ng_model
+Watir::HTMLElement.attributes << :ng_click
 
 module AwsAccountUtils
   class WatirBrowser
@@ -45,6 +46,5 @@ module AwsAccountUtils
     def proxy
       @proxy ||= ENV['HTTP_PROXY']
     end
-
   end
 end
