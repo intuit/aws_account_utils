@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler/setup'
 require 'simplecov'
 require 'webmock/rspec'
+require 'coveralls'
+Coveralls.wear!
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

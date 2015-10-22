@@ -1,3 +1,4 @@
+require 'aws_account_utils/account'
 require 'aws_account_utils/base'
 require 'aws_account_utils/version'
 require 'aws_account_utils/account_logger'
@@ -48,6 +49,14 @@ module AwsAccountUtils
     def change_root_password(account_email:, account_password:, new_password:)
       resp = password.change(account_email, account_password, new_password)
       logger.info 'Changed root password.' if resp
+      resp
+    ensure
+      browser.close rescue nil
+    end
+
+    def close_account(account_email:, account_password:)
+      resp = account.close(account_email, account_password)
+      logger.info 'Closed Account.' if resp
       resp
     ensure
       browser.close rescue nil
@@ -160,6 +169,10 @@ module AwsAccountUtils
 
     def challenge_questions
       @challenge_questions ||= ChallengeQuestions.new logger, browser
+    end
+
+    def account
+      @account ||= Account.new logger, browser
     end
 
     def consolidated_billing
