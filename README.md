@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/intuit/aws_account_utils.svg?branch=feature_delete_account)](https://travis-ci.org/intuit/aws_account_utils)
 [![Coverage Status](https://coveralls.io/repos/intuit/aws_account_utils/badge.svg?branch=feature_delete_account&service=github)](https://coveralls.io/github/intuit/aws_account_utils)
+[![Gem Version](https://badge.fury.io/rb/aws_account_utils.svg)](https://badge.fury.io/rb/aws_account_utils)
+[![Code Climate](https://codeclimate.com/github/intuit/aws_account_utils.png)](https://codeclimate.com/github/intuit/aws_account_utils)
+
 # AwsAccountUtils
 
 A collection of helpers for creating and modifying AWS account details that can not be done using any existing AWS API
