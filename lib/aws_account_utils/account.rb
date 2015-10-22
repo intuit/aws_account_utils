@@ -11,7 +11,7 @@ module AwsAccountUtils
     end
 
     def close(account_email, account_password)
-      logger.debug "Setting email preferences."
+      logger.debug "Closing AWS account."
 
       Login.new(logger, browser).execute url,
                                          account_email,

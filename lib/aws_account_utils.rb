@@ -212,7 +212,3 @@ module AwsAccountUtils
     end
   end
 end
-
-acct = AwsAccountUtils::AwsAccountUtils.new.close_account(account_email: 'cto-learnaws20150401c-learning@a.intuit.com',
-                                         account_password: 'bchKIbKOGZZu895HUEedLcipHLddcH84cyf_nFvv')
-acct

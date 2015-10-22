@@ -70,6 +70,4 @@ describe AwsAccountUtils::ChallengeQuestions do
                                                     3=>"answer3"})
 
   end
-
-  it "should generate random answers"
 end
