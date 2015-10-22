@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/intuit/aws_account_utils.svg?branch=feature_delete_account)](https://travis-ci.org/intuit/aws_account_utils)
+
 # AwsAccountUtils
 
 A collection of helpers for creating and modifying AWS account details that can not be done using any existing AWS API
