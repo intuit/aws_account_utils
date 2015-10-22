@@ -6,6 +6,8 @@ Special Note: the `create_account` operation requires that your IP be white-list
 
 ## Installation
 
+NOTE: Ruby 2.2 is required!
+
 Add this line to your application's Gemfile:
 
 ```ruby
