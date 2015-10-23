@@ -1,3 +1,4 @@
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/intuit/aws_account_utils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/intuit/aws_account_utils.svg?branch=feature_delete_account)](https://travis-ci.org/intuit/aws_account_utils)
 [![Coverage Status](https://coveralls.io/repos/intuit/aws_account_utils/badge.svg?branch=feature_delete_account&service=github)](https://coveralls.io/github/intuit/aws_account_utils)
 [![Gem Version](https://badge.fury.io/rb/aws_account_utils.svg)](https://badge.fury.io/rb/aws_account_utils)
