@@ -5,6 +5,8 @@
 
 # AwsAccountUtils
 
+[![Join the chat at https://gitter.im/intuit/aws_account_utils](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/intuit/aws_account_utils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A collection of helpers for creating and modifying AWS account details that can not be done using any existing AWS API
 
 Special Note: the `create_account` operation requires that your IP be white-listed by AWS in order to bypass the CAPTCHA
