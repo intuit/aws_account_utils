@@ -10,13 +10,13 @@ module AwsAccountUtils
       @browser = browser
     end
 
-    def set(account_email, account_password, company_name)
+    def set(account_email, account_password)
       logger.debug "Updating Company Name details."
       Login.new(logger, browser).execute url,
                                          account_email,
                                          account_password
       browser.a(:xpath => '//a[@ng-click="toggleEditingContactInfoState()"]').when_present.click
-      browser.input(:xpath => '//input[@ng-model="address.company"]').when_present.to_subtype.set "#{company_name}"
+      browser.input(:xpath => '//input[@ng-model="address.company"]').set "Company Name"
       screenshot(browser, "1")
       browser.button(:xpath => '//button[@ng-click="updateContactInformation()"]').when_present.click
       browser.div(:xpath => '//div[@ng-show="options.status == \'success\'"]').wait_until_present
