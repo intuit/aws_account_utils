@@ -35,16 +35,20 @@ module AwsAccountUtils
     def proxy_settings
       {
           'http'          => proxy,
-          'http_port'     => 80,
+          'http_port'     => proxy_port,
           'ssl'           => proxy,
-          'ssl_port'      => 80,
+          'ssl_port'      => proxy_port,
           'no_proxies_on' => '127.0.0.1',
           'type'          => 1
       }
     end
 
     def proxy
-      @proxy ||= ENV['HTTP_PROXY']
+      @proxy ||= ENV['AWS_ACCOUNT_UTILS_HTTP_PROXY']
+    end
+
+    def proxy_port
+      @proxy_port ||= ENV['AWS_ACCOUNT_UTILS_HTTP_PROXY_PORT']
     end
   end
 end

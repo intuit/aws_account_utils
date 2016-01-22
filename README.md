@@ -37,8 +37,8 @@ Overview
 
 If you are required to go through a proxy, the following should be set prior to execution.
 ```
-export no_proxy=127.0.0.1
-export http_proxy=myproxyhots.com
+export AWS_ACCOUNT_UTILS_HTTP_PROXY=myproxyhots.com
+export AWS_ACCOUNT_UTILS_HTTP_PROXY_PORT=80
 ```
 
 ```ruby
