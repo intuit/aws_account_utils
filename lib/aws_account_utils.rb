@@ -155,8 +155,8 @@ module AwsAccountUtils
       browser.close rescue nil
     end
 
-    def set_company_name(account_email:, account_password:, company_name:)
-      resp = company_name.set account_email, account_password, company_name
+    def set_company_name(account_email:, account_password:)
+      resp = company_name.set account_email, account_password
       logger.info 'Set company name.' if resp
       resp
     ensure

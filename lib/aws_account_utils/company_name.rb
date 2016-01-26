@@ -26,6 +26,7 @@ module AwsAccountUtils
       raise StandardError, "#{self.class.name} - #{e}"
     end
 
+    private
     def url
       'https://console.aws.amazon.com/billing/home?#/account'
     end
