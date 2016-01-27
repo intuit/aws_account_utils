@@ -156,7 +156,8 @@ module AwsAccountUtils
     end
 
     def set_company_name(account_email:, account_password:)
-      resp = company_name.set account_email, account_password
+
+      resp = company_name.set account_email, account_password, company_name
       logger.info 'Set company name.' if resp
       resp
     ensure
