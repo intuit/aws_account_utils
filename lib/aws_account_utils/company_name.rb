@@ -11,7 +11,7 @@ module AwsAccountUtils
     end
 
     def set(account_email, account_password, company_name)
-      company_name = 'Stuffs'
+      company_name = 'Brynja'
       logger.debug "Updating Company Name details."
       Login.new(logger, browser).execute url,
                                          account_email,
