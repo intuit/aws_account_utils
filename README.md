@@ -65,6 +65,7 @@ aws_utils = AwsAccountUtils::AwsAccountUtils.new(
   * [request_consolidated_billing](#request_consolidated_billing)
   * [set_alternate_contacts](#set_alternate_contacts)
   * [set_challenge_questions](#set_challenge_questions)
+  * [set_company_name](#set_company_name)
 
 create_account
 ------------
@@ -465,6 +466,36 @@ answers: (optional, Hash) - A hash of answers to fill in for the security questi
 **Returns:**
 
 `#return => Hash`
+
+---
+
+set_company_name
+------------
+
+> Sets company name for the account (any time after account is created)
+
+`set_company_name(account_email:, account_password:, company_name:)`
+
+**Examples:**
+```Ruby
+                                     
+resp = aws_utils.set_alternate_contacts(account_email: 'adfefef@gmail.com',
+                                        account_password: 'foobar1212121,
+                                        name: 'The Munsters, Inc.')
+resp #=> True/False
+```
+
+**Parameters:**
+```
+account_email: (required, String) - The email address to use with this account
+account_password: (required, String) - The password to use with this account
+contact_info: (required, String) - The company name to add to this account
+
+```
+
+**Returns:**
+
+`#return => Boolean`
 
 ---
 

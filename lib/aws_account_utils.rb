@@ -13,6 +13,7 @@ require 'aws_account_utils/consolidated_billing'
 require 'aws_account_utils/root_access_keys'
 require 'aws_account_utils/password'
 require 'aws_account_utils/alternate_contacts'
+require 'aws_account_utils/company_name'
 require 'aws_account_utils/logout'
 
 module AwsAccountUtils
@@ -148,11 +149,20 @@ module AwsAccountUtils
       raise ArgumentError, "contact_info: must be a hash." unless contact_info.is_a?(Hash)
 
       resp = alternate_contacts.set account_email, account_password, contact_info
-      logger.info 'Set alterante contacts.' if resp
+      logger.info 'Set alternate contacts.' if resp
       resp
     ensure
       browser.close rescue nil
     end
+
+    def set_company_name(account_email:, account_password:, name:)
+      resp = company_name.set account_email, account_password, name
+      logger.info 'Set company name.' if resp
+      resp
+    ensure
+      browser.close rescue nil
+    end
+
 
     private
     def account_registration
@@ -161,6 +171,10 @@ module AwsAccountUtils
 
     def alternate_contacts
       @alternate_contacts ||= AlternateContacts.new logger, browser
+    end
+
+    def company_name
+      @company_name ||= CompanyName.new logger, browser
     end
 
     def browser
