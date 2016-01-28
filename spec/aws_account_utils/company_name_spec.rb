@@ -11,7 +11,7 @@ describe AwsAccountUtils::CompanyName do
   let(:button) { double 'browser button' }
   let(:text_field) { double 'browser text field' }
   let(:url) { 'https://console.aws.amazon.com/billing/home?#/account' }
-  let(:company_name) { 'Timbo' }
+  let(:name) { 'company_name' }
 
   it "should update Contact Details" do
     expect(logger).to receive(:debug).with('Updating Company Name details.')
@@ -41,7 +41,8 @@ describe AwsAccountUtils::CompanyName do
     expect(browser).to receive(:input)
                    .with({:xpath=>"//input[@ng-model=\"address.company\"]"})
                    .and_return input
-    expect(input).to receive(:set).with('Timbo').and_return input
+    expect(input).to receive(:to_subtype).and_return input
+    expect(input).to receive(:set).with('company_name').and_return input
 
 
     expect(browser).to receive(:button)

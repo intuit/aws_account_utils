@@ -17,7 +17,7 @@ module AwsAccountUtils
                                          account_password
       browser.a(:xpath => '//a[@ng-click="toggleEditingContactInfoState()"]').when_present.click
       browser.input(:xpath => '//input[@ng-model="address.company"]').to_subtype.set(company_name)
-      screenshot(browser, "1")
+      # screenshot(browser, "1")
       browser.button(:xpath => '//button[@ng-click="updateContactInformation()"]').when_present.click
       browser.div(:xpath => '//div[@ng-show="options.status == \'success\'"]').wait_until_present
       true
