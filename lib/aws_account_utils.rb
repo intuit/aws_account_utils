@@ -155,18 +155,14 @@ module AwsAccountUtils
       browser.close rescue nil
     end
 
-    def set_company_name(account_email:, account_password:, company_name:)
-      self.company_name
-      resp = @company_name.set account_email, account_password, company_name
+    def set_company_name(account_email:, account_password:, name:)
+      resp = company_name.set account_email, account_password, name
       logger.info 'Set company name.' if resp
       resp
     ensure
       browser.close rescue nil
     end
 
-    def company_name
-      @company_name ||= CompanyName.new logger, browser
-    end
 
     private
     def account_registration
@@ -175,6 +171,10 @@ module AwsAccountUtils
 
     def alternate_contacts
       @alternate_contacts ||= AlternateContacts.new logger, browser
+    end
+
+    def company_name
+      @company_name ||= CompanyName.new logger, browser
     end
 
     def browser
