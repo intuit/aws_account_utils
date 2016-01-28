@@ -481,7 +481,7 @@ set_company_name
                                      
 resp = aws_utils.set_alternate_contacts(account_email: 'adfefef@gmail.com',
                                         account_password: 'foobar1212121,
-                                        company_name: 'The Munsters, Inc.')
+                                        name: 'The Munsters, Inc.')
 resp #=> True/False
 ```
 
