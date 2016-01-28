@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'aws_account_utils'
+require 'watir-webdriver'
+
+aws_utils = AwsAccountUtils::AwsAccountUtils.new(browser: (Watir::Browser.new :chrome))
+
+resp = aws_utils.set_company_name(account_email: 'acupuncturetim@gmail.com',
+                                  account_password: '---',
+                                  company_name: 'asdf')
