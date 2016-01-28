@@ -487,7 +487,7 @@ resp #=> True/False
 
 **Parameters:**
 ```
-account_email: (required, String) - The email to associate with this account
+account_email: (required, String) - The email address to use with this account
 account_password: (required, String) - The password to use with this account
 contact_info: (required, String) - The company name to add to this account
 
