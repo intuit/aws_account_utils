@@ -55,6 +55,7 @@ aws_utils = AwsAccountUtils::AwsAccountUtils.new(
   * [create_account](#create_account)
   * [change_root_password](#change_root_password)
   * [check_enterprise_support](#check_enterprise_support)
+  * [close_account](#close_account)
   * [confirm_consolidated_billing](#confirm_consolidated_billing)
   * [create_root_access_keys](#create_root_access_keys)
   * [delete_root_access_keys](#delete_root_access_keys)
@@ -145,6 +146,32 @@ check_enterprise_support
 ```Ruby
 resp = aws_utils.check_enterprise_support(account_email: 'adfefef@gmail.com',
                                           account_password: 'foobar1212121'')
+resp #=> true/false
+```
+
+**Parameters:**
+```
+account_email: (required, String) - The email to associate with this new account
+account_password: (required, String) - The password to use with this new account
+```
+
+**Returns:**
+
+`#return => Boolean`
+
+---
+
+close_account
+------------
+
+> Closes AWS Account
+
+`close_account(account_email:, account_password:)`
+
+**Examples:**
+```Ruby
+resp = aws_utils.close_account(account_email: 'adfefef@gmail.com',
+                               account_password: 'foobar1212121'')
 resp #=> true/false
 ```
 

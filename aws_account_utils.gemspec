@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.8', '>= 0.8.2'
   spec.add_development_dependency 'fakefs', '~> 0.6', '>= 0.6.7'
   spec.add_runtime_dependency 'rake', '~> 10.3.2', '~> 10.0'
-  spec.add_runtime_dependency 'watir-webdriver', '~> 0.8', '>= 0.8.0'
+  spec.add_runtime_dependency 'watir-webdriver', '~> 0.9', '>= 0.9.1'
   spec.add_runtime_dependency 'random-word', '~> 1.3', '>= 1.3.0'
 end
