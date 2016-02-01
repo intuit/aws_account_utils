@@ -5,6 +5,7 @@ require 'aws_account_utils/account_logger'
 require 'aws_account_utils/watir_browser'
 require 'aws_account_utils/account_registration'
 require 'aws_account_utils/customer_information'
+require 'aws_account_utils/challenge_questions'
 require 'aws_account_utils/settings'
 require 'aws_account_utils/iam_billing'
 require 'aws_account_utils/email_preferences'
@@ -135,7 +136,7 @@ module AwsAccountUtils
       browser.close rescue nil
     end
 
-    def set_challenge_questions(account_email:, account_password:, answers:)
+    def set_challenge_questions(account_email:, account_password:, answers:{})
       raise ArgumentError, "answers: must be a hash." unless answers.is_a?(Hash)
 
       resp = challenge_questions.create account_email, account_password, answers
