@@ -24,10 +24,14 @@ module AwsAccountUtils
       screenshot(browser, "2")
 
       browser.wait_until{ browser.text.include? 'Are you sure you want to close your account?'}
-      browser.span(:text => /Close Account/).when_present.click
       screenshot(browser, "3")
 
+      browser.div(:class => "modal fade  in").button(:ng_click =>'closeAccount()').when_present.click
+      screenshot(browser, "4")
+
       browser.p(:text => /Are you sure you want to close your account?/).wait_while_present
+
+
 
       browser.wait_until{ browser.text.include? 'Account has been closed'}
 

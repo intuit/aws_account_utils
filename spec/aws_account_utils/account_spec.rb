@@ -10,7 +10,7 @@ describe AwsAccountUtils::Account do
   let(:text) { double 'browser text' }
   let(:p) { double 'browser p element' }
   let(:button) { double 'browser button' }
-  let(:span) { double 'browser span' }
+  let(:div) { double 'browser div' }
   let(:url) { 'https://console.aws.amazon.com/billing/home?#/account' }
 
   it "should create a url alias" do
@@ -42,9 +42,10 @@ describe AwsAccountUtils::Account do
 
     expect(browser).to receive(:wait_until).and_return browser
 
-    expect(browser).to receive(:span).with({:text => /Close Account/}).and_return span
-    expect(span).to receive(:when_present).and_return span
-    expect(span).to receive(:click)
+    expect(browser).to receive(:div).with({:class=>"modal fade  in"}).and_return div
+    expect(div).to receive(:button).with({:ng_click=>"closeAccount()"}).and_return div
+    expect(div).to receive(:when_present).and_return div
+    expect(div).to receive(:click)
 
     expect(browser).to receive(:p).with({:text => /Are you sure you want to close your account?/}).and_return p
     expect(p).to receive(:wait_while_present).and_return p

@@ -11,7 +11,7 @@ module AwsAccountUtils
       @browser = browser
     end
 
-    def create(account_email, account_password, challenge_words = {})
+    def create(account_email, account_password, challenge_words)
       logger.debug "Setting security challenge answers."
       Login.new(logger, browser).execute url,
                                          account_email,
@@ -19,6 +19,7 @@ module AwsAccountUtils
 
       browser.a(:xpath => '//a[@ng-click="toggleEditingSecurityQuestionsInfoState()"]').when_present.click
 
+      challenge_words = rand_challenge_words if challenge_words.empty?
       challenge_words.each do |num, word|
         browser.input(:xpath => "//input[@ng-model=\"selectedSecurityQuestions.question#{num}.answer\"]").to_subtype.when_present.set word
       end
@@ -33,7 +34,7 @@ module AwsAccountUtils
     end
 
     private
-    def challenge_words
+    def rand_challenge_words
       RandomWord.exclude_list << (/_/) if RandomWord.exclude_list.none?
 
       @challenge_words ||= (1..3).inject({}) do |hash, num|

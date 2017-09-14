@@ -2,6 +2,7 @@ require 'aws_account_utils/base'
 require 'watir-webdriver'
 Watir::HTMLElement.attributes << :ng_model
 Watir::HTMLElement.attributes << :ng_click
+Watir::HTMLElement.attributes << :ng_class
 
 module AwsAccountUtils
   class WatirBrowser
